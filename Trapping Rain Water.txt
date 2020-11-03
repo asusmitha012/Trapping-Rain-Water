@@ -1,0 +1,29 @@
+import java.util.*;
+class Main{
+    public static void main(String[] args){
+        Scanner scan=new Scanner(System.in);
+        int n=scan.nextInt();
+        for(int h=0;h<n;h++){
+            int l=scan.nextInt();
+            int a[]=new int[l];
+            for(int j=0;j<l;j++){
+                a[j]=scan.nextInt();
+            }
+            int x[]=new int[l];
+            int y[]=new int[l];
+            int result=0;
+            x[0]=a[0];
+            for(int j=1;j<l;j++){
+                x[j]=Math.max(x[j-1],a[j]);
+            }
+            y[l-1]=a[l-1];
+            for(int j=l-2;j>=0;j--){
+                y[j]=Math.max(y[j+1],a[j]);
+            }
+            for(int j=0;j<l;j++){
+                result+=Math.min(x[j],y[j]-a[j]);
+            }
+            System.out.println(result);
+        }
+    }
+}
